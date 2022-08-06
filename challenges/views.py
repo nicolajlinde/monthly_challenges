@@ -1,19 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import Http404, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 
 monthly_challenges = {
-    "january": "awd",
-    "february": "dairy",
-    "march": "lard",
-    "april": "fabril",
-    "may": "maybe",
-    "june": "noon",
-    "july": "my pants are fly",
-    "august": "sports-no",
-    "september": "check my temper",
-    "october": "octo",
-    "november": "dont nut",
+    "january": "Walking 20 min everyday.",
+    "february": "Code python everyday.",
+    "march": "100 hours of Godot Engine",
+    "april": "Swim 10k every week.",
+    "may": "Relax and travel to Thailand.",
+    "june": "Draw everyday.",
+    "july": "Rollerblade 5k a week.",
+    "august": "Don't eat meat for the whole month.",
+    "september": "Learn Vue and build a TODO app.",
+    "october": "Find a job.",
+    "november": "Dont nut",
     "december": None
 }
 
@@ -46,5 +46,5 @@ def monthly_challenge(request, month):
             "text": text
         })
     except:
-        return HttpResponseNotFound("This month is not supported!")
+        raise Http404
 
